@@ -1,0 +1,23 @@
+<ul>
+    {{#each burgers }}
+    {{#unless devoured}}
+    {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<ul>
+    {{#each burgers}}
+    {{#if devoured}}
+    {{> burgers/burger-block devoured=false}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+<div class="form-group">
+
+    <input type="text" id="ca" name="name" label="Burger name">
+</div>
+
+<button type="button">Submit</button>
