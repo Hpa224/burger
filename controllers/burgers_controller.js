@@ -1,6 +1,6 @@
 let express = require("express");
-let burger = require('../models/burger.js')
 let router = express.Router()
+let burger = require('../models/burger.js')
 
 router.get("/", function(req, res) {
     burger.select(function(data) {
@@ -11,12 +11,21 @@ router.get("/", function(req, res) {
     });
 
 router.post("/api/burgers", function(req, res) {
-    burger.create(["name", "devoured"], [req.body.name, req.body.devoured], function(result) {
+  console.log(req.body)
+    burger.create(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
         res.json({ id: result.insertId });
         });
     });
 
-router.put("/api/cats/:id", function(req, res) {
+router.get("/api", function(req, res) {
+  burger.select(function(data) {
+
+    console.log(data);
+    res.json(data);
+      })
+  });
+
+router.put("/api/burgers/:id", function(req, res) {
     let condition = "id = " + req.params.id;
 
     console.log("condition", condition);

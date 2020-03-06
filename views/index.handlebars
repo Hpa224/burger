@@ -1,17 +1,27 @@
 
 <ul>
     {{#each burgers}}
-    {{#if devoured}}
-    {{/if}}
+     {{!-- {{#unless devoured}} --}}
+      {{!-- {{> burgers/burger-block devoured=false}} --}}
+    <li id="burger-{{this.id}}">
+        <p>{{this.id}}.{{this.burger_name}}</p>
+        <button id="{{this.id}}" data-devoured="{{this.devoured}}" class="devourer">Eat it</button>
+
+    </li>
+    {{!-- {{/unless}} --}}
     {{/each}}
 </ul>
+
+<p id="test"></p>
 
 <h2>Devoured Burgers</h2>
 
 <ul>
     {{#each burgers}}
-    {{#if devoured}}
-    {{/if}}
+    {{!-- {{#if devoured}}
+        {{> burgers/devoured=true}}
+
+    {{/if}} --}}
     {{/each}}
 </ul>
 
@@ -20,4 +30,6 @@
     <input type="text" id="burgername" name="name">
 </div>
 
-<button type="button" id="button">Submit Burger</button>
+<button type="button" id="submitbutton">Submit Burger</button>
+
+
